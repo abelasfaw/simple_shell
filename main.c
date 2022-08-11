@@ -16,7 +16,7 @@ int main(int argc, char *args[], char *env[])
 {
 	char *input_buffer;
 	size_t buffer_size;
-	int status, words_count, path_status;
+	int status, words_count, path_status, freed;
 	char *argv[100];
 	char *updated_path;
 	/**pid_t child1;**/
@@ -24,6 +24,7 @@ int main(int argc, char *args[], char *env[])
 
 	head = NULL;
 	buffer_size = 32;
+	freed = 0;
 	input_buffer = malloc(sizeof(char) * buffer_size);
 	if (input_buffer == NULL)
 	{
@@ -47,6 +48,7 @@ int main(int argc, char *args[], char *env[])
 		words_count = split_string(input_buffer, &head);
 		if (words_count == -1)
 		{
+			freed = 1;
 			break;
 		}
 		if (build_argument_vector(head, argv) == -1)
@@ -81,7 +83,13 @@ int main(int argc, char *args[], char *env[])
 			execute(argv[0], argv, env);
 		}
 	}
-	free(head);
-	free(input_buffer);
+	if (head != NULL)
+	{
+		free(head);
+	}
+	if (freed != 1)
+	{
+		free(input_buffer);
+	}
 	return (0);
 }
