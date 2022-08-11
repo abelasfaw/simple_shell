@@ -23,13 +23,12 @@ int main(int argc, char *args[], char *env[])
 	words *head;
 
 	head = NULL;
-	buffer_size = 1920;
+	buffer_size = 100;
 	freed = 0;
-	input_buffer = malloc(sizeof(char) * (buffer_size + 1));
+	input_buffer = malloc(sizeof(char) * buffer_size);
 	if (input_buffer == NULL)
 	{
 		_puts("Malloc error \n");
-		/**printf("Malloc error \n");**/
 		return (-1);
 	}
 	while (1)
