@@ -23,9 +23,9 @@ int main(int argc, char *args[], char *env[])
 	words *head;
 
 	head = NULL;
-	buffer_size = 32;
+	buffer_size = 1920;
 	freed = 0;
-	input_buffer = malloc(sizeof(char) * buffer_size);
+	input_buffer = malloc(sizeof(char) * (buffer_size + 1));
 	if (input_buffer == NULL)
 	{
 		_puts("Malloc error \n");
