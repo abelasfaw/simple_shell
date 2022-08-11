@@ -19,5 +19,5 @@ void execute(char *path, char **argv, char **env);
 extern char **environ;
 char *_getenv(char *name);
 void _printenv(void);
-int check_command(char *command);
+int check_command(char *command, char *buffer);
 #endif
