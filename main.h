@@ -20,4 +20,5 @@ extern char **environ;
 char *_getenv(char *name);
 void _printenv(void);
 int check_command(char *command, char *buffer);
+void _print_error(char *str);
 #endif

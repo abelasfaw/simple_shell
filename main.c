@@ -16,7 +16,7 @@ int main(int argc, char *args[], char *env[])
 {
 	char *input_buffer;
 	size_t buffer_size;
-	int status, words_count, path_status, freed;
+	int status, words_count, path_status, freed, error;
 	char *argv[100];
 	char *updated_path;
 	/**pid_t child1;**/
@@ -25,6 +25,7 @@ int main(int argc, char *args[], char *env[])
 	head = NULL;
 	buffer_size = 100;
 	freed = 0;
+	error = 0;
 	input_buffer = malloc(sizeof(char) * buffer_size);
 	if (input_buffer == NULL)
 	{
@@ -42,6 +43,10 @@ int main(int argc, char *args[], char *env[])
 				_puts("\n");
 			}
 			free(input_buffer);
+			if (error == 1)
+			{
+				exit(197);
+			}
 			exit(0);
 		}
 		words_count = split_string(input_buffer, &head);
@@ -68,7 +73,11 @@ int main(int argc, char *args[], char *env[])
 		path_status = check_command_path(argv[0]);
 		if (path_status == -1)
 		{
-			perror(args[argc - argc]);
+			_print_error(args[argc - argc]);
+			_print_error(": 1: ");
+			_print_error(argv[0]);
+			_print_error(": not found\n");
+			error = 1;
 			continue;
 		}
 		if (path_status == 1)

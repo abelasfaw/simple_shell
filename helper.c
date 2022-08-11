@@ -123,6 +123,10 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+int _putchar2(char c)
+{
+	return (write(2, &c, 1));
+}
 void _puts(char *str)
 {
 	int index = 0;
@@ -130,6 +134,15 @@ void _puts(char *str)
 	while (str[index])
 	{
 		_putchar(str[index]);
+		index += 1;
+	}
+}
+void _print_error(char *str)
+{
+	int index = 0;
+	while (str[index])
+	{
+		_putchar2(str[index]);
 		index += 1;
 	}
 }
