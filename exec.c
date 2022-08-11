@@ -20,6 +20,7 @@ void execute(char *path, char **argv, char **env)
 		if (execve(path, argv, env) == -1)
 		{
 			perror(argv[0]);
+			exit(2);
 		}
 		exit(1);
 	}
