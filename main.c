@@ -42,7 +42,7 @@ int main(int argc, char *args[], char *env[])
 				_puts("\n");
 			}
 			free(input_buffer);
-			exit(1);
+			exit(0);
 		}
 		words_count = split_string(input_buffer, &head);
 		if (words_count == -1)
