@@ -22,7 +22,7 @@ void execute(char *path, char **argv, char **env)
 			perror(argv[0]);
 			exit(1);
 		}
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	wait(&exec_status);
 }

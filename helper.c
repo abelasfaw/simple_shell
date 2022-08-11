@@ -77,8 +77,10 @@ int check_command_path(char *path)
 		updated_path = create_complete_path(path);
 		if (stat(updated_path, &st) == 0)
 		{
+			free(updated_path);
 			return (1);
 		}
+		free(updated_path);
 	}
 	return (-1);
 }

@@ -21,23 +21,3 @@ int split_string(char *str, words **head)
 	}
 	return (word_count);
 }
-/**
-int main(void)
-{
-	int status;
-	char str[20] = "ABEL ASFAW    -DINSA";
-	words *head = NULL;
-	status = split_string(str,&head);
-	if (status == -1)
-	{
-		return (-1);
-	}
-	while (head->next != NULL)
-	{
-		printf("%s\n", head->word);
-		head = head->next;
-	}
-	printf("%s\n", head->word);
-	return (0);
-}
-*/

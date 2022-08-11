@@ -41,16 +41,17 @@ int main(int argc, char *args[], char *env[])
 			{
 				_puts("\n");
 			}
+			free(input_buffer);
 			exit(1);
 		}
 		words_count = split_string(input_buffer, &head);
 		if (words_count == -1)
 		{
-			exit(1);
+			break;
 		}
 		if (build_argument_vector(head, argv) == -1)
 		{
-			exit(1);
+			break;
 		}
 		if (argv[0] == NULL)
 		{
@@ -62,7 +63,6 @@ int main(int argc, char *args[], char *env[])
 			head = NULL;
 			continue;
 		}
-		/**printf("argv[0]: %s\n", argv[0]);**/
 		head = NULL;
 		path_status = check_command_path(argv[0]);
 		if (path_status == -1)
@@ -74,11 +74,14 @@ int main(int argc, char *args[], char *env[])
 		{
 			updated_path = create_complete_path(argv[0]);
 			execute(updated_path, argv, env);
+			free(updated_path);
 		}
 		else
 		{
 			execute(argv[0], argv, env);
 		}
 	}
+	free(head);
+	free(input_buffer);
 	return (0);
 }
