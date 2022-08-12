@@ -23,5 +23,7 @@ void _printenv(void);
 int check_command(char *command[], char *buffer);
 void _print_error(char *str);
 int _atoi(char *s);
-char *concat_all(char *name, char *sep, char *value);
+char *concat_all(char *env_name, char *separator, char *value);
+void _setenv(char *env[]);
+void _unsetenv(char *env[]);
 #endif
