@@ -54,6 +54,16 @@ int check_command(char *command[], char *buffer)
 		free(buffer);
 		exit(0);
 	}
+	else if (compare_string("setenv", command[0]) == 0)
+	{
+		_setenv(command);
+		return(0);
+	}
+	else if (compare_string("unsetenv", command[0]) == 0)
+	{
+		_unsetenv(command);
+		return (0);
+	}
 	return (-1);
 }
 int compare_string(char *str1, char *str2)
