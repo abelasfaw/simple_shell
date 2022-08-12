@@ -1,11 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-/**
- * _atoi - converts a string into an integer
- *@s: pointer to a string
- *Return: the integer
- */
 int _atoi(char *s)
 {
 	int i, integer, sign = 1;
@@ -27,28 +22,6 @@ int _atoi(char *s)
 	}
 	return (integer);
 }
-
-/**
- * env - prints the current environment
- * @arv: array of arguments
- */
-void env(char **arv __attribute__ ((unused)))
-{
-
-	int i;
-
-	for (i = 0; environ[i]; i++)
-	{
-		_puts(environ[i]);
-		_puts("\n");
-	}
-
-}
-
-/**
- * _setenv - Initialize a new environment variable, or modify an existing one
- * @arv: array of entered words
- */
 void _setenv(char **arv)
 {
 	int i, j, k;
@@ -92,11 +65,6 @@ void _setenv(char **arv)
 
 	}
 }
-
-/**
- * _unsetenv - Remove an environment variable
- * @arv: array of entered words
- */
 void _unsetenv(char **arv)
 {
 	int i, j;
