@@ -14,11 +14,14 @@ int build_argument_vector(words *head, char *argv[]);
 int check_command_path(char *path);
 char *create_complete_path(char *command);
 int _putchar(char c);
+int _strlen(char *str);
 void _puts(char *str);
 void execute(char *path, char **argv, char **env);
 extern char **environ;
 char *_getenv(char *name);
 void _printenv(void);
-int check_command(char *command, char *buffer);
+int check_command(char *command[], char *buffer);
 void _print_error(char *str);
+int _atoi(char *s);
+char *concat_all(char *name, char *sep, char *value);
 #endif

@@ -64,7 +64,7 @@ int main(int argc, char *args[], char *env[])
 			head = NULL;
 			continue;
 		}
-		if (check_command(argv[0], input_buffer) == 0)
+		if (check_command(argv, input_buffer) == 0)
 		{
 			head = NULL;
 			continue;
