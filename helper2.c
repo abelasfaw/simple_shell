@@ -1,31 +1,31 @@
 #include <stdlib.h>
 #include "main.h"
-char *concat_all(char *name, char *sep, char *value)
+char *concat_all(char *env_name, char *separator, char *value)
 {
-	char *result;
-	int l1, l2, l3, i, k;
+	char *final;
+	int index, index2, l1, l2, l3;
 
-	l1 = _strlen(name);
-	l2 = _strlen(sep);
+	l1 = _strlen(env_name);
+	l2 = _strlen(separator);
 	l3 = _strlen(value);
 
-	result = malloc(l1 + l2 + l3 + 1);
-	if (!result)
+	final = malloc(l1 + l2 + l3 + 1);
+	if (!final)
 		return (NULL);
 
-	for (i = 0; name[i]; i++)
-		result[i] = name[i];
-	k = i;
+	for (index = 0; env_name[index]; index++)
+		final[index] = env_name[index];
+	index2 = index;
 
-	for (i = 0; sep[i]; i++)
-		result[k + i] = sep[i];
-	k = k + i;
+	for (index = 0; separator[index]; index++)
+		final[index2 + index] = separator[index];
+	index2 = index2 + index;
 
-	for (i = 0; value[i]; i++)
-		result[k + i] = value[i];
-	k = k + i;
+	for (index = 0; value[index]; index++)
+		final[index2 + index] = value[index];
+	index2 = index2 + index;
 
-	result[k] = '\0';
+	final[index2] = '\0';
 
-	return (result);
+	return (final);
 }
