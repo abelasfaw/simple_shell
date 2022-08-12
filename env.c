@@ -1,8 +1,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
-int check_command(char *command);
+int check_command(char *command[], char *buffer);
 int compare_string(char *str1, char *str2);
 char *_getenv(char *name)
 {
@@ -34,15 +35,21 @@ char *_getenv(char *name)
 	}
 	return (0);
 }
-int check_command(char *command)
+int check_command(char *command[], char *buffer)
 {
-	if (compare_string("env", command) == 0)
+	if (compare_string("env", command[0]) == 0)
 	{
 		_printenv();
 		return (0);
 	}
-	else if (compare_string("exit", command) == 0)
+	else if (compare_string("exit", command[0]) == 0)
 	{
+		if (command[1] != NULL)
+		{
+			free(buffer);
+			exit(_atoi(command[1]));
+		}
+		free(buffer);
 		exit(0);
 	}
 	return (-1);
