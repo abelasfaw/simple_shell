@@ -24,8 +24,7 @@ int main(int argc, char *args[], char *env[])
 
 	head = NULL;
 	buffer_size = 100;
-	freed = 0;
-	error = 0;
+	freed = error = 0;
 	input_buffer = malloc(sizeof(char) * buffer_size);
 	if (input_buffer == NULL)
 	{
