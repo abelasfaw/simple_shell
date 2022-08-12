@@ -37,6 +37,7 @@ char *_getenv(char *name)
 }
 int check_command(char *command[], char *buffer)
 {
+	int status;
 	if (compare_string("env", command[0]) == 0)
 	{
 		_printenv();
@@ -46,8 +47,9 @@ int check_command(char *command[], char *buffer)
 	{
 		if (command[1] != NULL)
 		{
+			status = _atoi(command[1]);
 			free(buffer);
-			exit(_atoi(command[1]));
+			exit(status);
 		}
 		free(buffer);
 		exit(0);
